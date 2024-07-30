@@ -44,19 +44,24 @@ func NewInsertCmd() *cobra.Command {
 			}
 
 			// Measurement
-			start := time.Now()
-			for i := 0; i < rep; i++ {
-				err = db.Transaction(func(tx *gorm.DB) error {
+			err = db.Transaction(func(tx *gorm.DB) error {
+				start := time.Now()
+				for i := 0; i < rep; i++ {
 					_, err = dao.InsertRecord(tx, rec)
-					return err
-				})
-				if err != nil {
-					return err
+					if err != nil {
+						return err
+					}
 				}
+				time := time.Since(start)
+				fmt.Printf("repeat: %v\n", rep)
+				fmt.Printf("time: %v\n", time)
+
+				return nil
+			})
+
+			if err != nil {
+				log.Fatalf("[ERROR] %v", err)
 			}
-			time := time.Since(start)
-			fmt.Printf("repeat: %v\n", rep)
-			fmt.Printf("time: %v\n", time)
 
 			return nil
 		},
