@@ -1,0 +1,14 @@
+{
+	"name": "gorm-performance",
+	"dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+	"workspaceFolder": "/workspaces/gorm-performance",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.Go",
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	}
+}
