@@ -3,9 +3,10 @@
 This is the repository for performance test of gorm.
 
 ## Requirement
-Docker Desktop
+- Docker Desktop
+- VSCode & Dev Container Extension
 
-※The maintainer use codespaces.
+※The maintainer uses codespaces.
 
 ## Local Setup
 
